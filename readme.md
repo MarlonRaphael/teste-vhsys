@@ -1,6 +1,11 @@
 # Teste VHSYS
 
-Para o teste foi utilizado PHP 7.3 com Laravel 5.8 e banco de dados MySQL 5.7
+Para o teste foi utilizado:
+
+* PHP 7.3
+* MySQL 5.7
+* Bootstrap 4.3
+* Laravel 5.8
 
 ## Requisitos
 
