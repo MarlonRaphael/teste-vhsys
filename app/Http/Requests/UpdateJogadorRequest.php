@@ -1,0 +1,40 @@
+<?php
+
+namespace App\Http\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class UpdateJogadorRequest extends FormRequest
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize()
+    {
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules()
+    {
+        return [
+            'avatar'        => ['nullable', 'image', 'dimensions:min_width=100,min_height=200,max_width=500,max_height=500'], //size nullable
+            'nome'          => ['bail', 'required', 'string', 'min:12', 'max:255'],
+            'apelido'       => ['bail', 'required', 'string', 'min:12', 'max:255', 'unique:jogadores,id'],
+            'altura'        => ['bail', 'required', 'numeric', 'between:0,99.99'],
+            'peso'          => ['bail', 'required', 'numeric', 'between:0,99.99'],
+            'pe'            => ['bail', 'required', 'string', 'in:destro,canhoto'],
+            'posicao'       => ['bail', 'required', 'string', 'min:6', 'max:50'],
+            'camisa'        => ['bail', 'required', 'integer', 'min:0'],
+            'dt_nascimento' => ['bail', 'required', 'date'],
+            'nacionalidade' => ['bail', 'required', 'string', 'min:6', 'max:255'],
+            'clube_id'      => ['bail', 'required', 'integer', 'exists:clubes,id']
+        ];
+    }
+}
